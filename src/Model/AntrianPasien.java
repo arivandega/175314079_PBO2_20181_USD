@@ -34,9 +34,15 @@ public class AntrianPasien {
             //antrian sudah penuh
             throw new Exception("Antrian Sudah Penuh");
         }
+        
     }
-    public Pasien PanggilPasien(int nomorAntrian){
-        return null;
+    
+    public Pasien PanggilPasien(int nomorAntrian)throws Exception{
+        if (nomorAntrian<JUMLAH_MAKSIMAL_PASIEN) {
+        return DaftarPasien[nomorAntrian];
+        }else{
+            throw new Exception("Tidak ada pasien dengan nomor tersebut");
+        }
     }
 
     public int getTanggalAntrian() {
