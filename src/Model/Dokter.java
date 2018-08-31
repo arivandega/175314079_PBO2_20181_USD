@@ -3,42 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package NoAntrian;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+package Model;
 
 /**
  *
  * @author ROG
  */
-public class Pasien {
-    
-    private String noRekamMedis;
+public class Dokter {
+    private String nomorPegawai;
     private String nama;
     private String alamat;
     private String tempatLahir;
     private int tanggalLahir;
     private int bulanLahir;
     private int tahunLahir;
-    
-    public Pasien() {
+
+    public Dokter() {
 
     }
 
-    public Pasien(String nama) {
+    public Dokter(String nama) {
         this.nama = nama;
     }
 
-    public String getNoRekamMedis() {
-        return noRekamMedis;
+    public String getNomorPegawai() {
+        return nomorPegawai;
     }
 
-    public void setNoRekamMedis(String noRekamMedis) throws Exception{
-        if (noRekamMedis.length() <= 11 && noRekamMedis.length() >= 6 ) {
-            this.noRekamMedis = noRekamMedis;
-        } else {
-            throw new Exception("Nomor rekam Medis Salah,\n maksimal 11 karakter dan minimal 6 karakter");
+    public void setNomorPegawai(String nomorPegawai) throws Exception {
+        if (nomorPegawai.length() == 5) {
+            this.nomorPegawai = (nomorPegawai + nama.substring(0, 3));
+        }else {
+            throw new Exception("Format Tidak Sesuai");
         }
     }
 
@@ -70,16 +66,15 @@ public class Pasien {
         return tanggalLahir;
     }
 
-    public void setTanggalLahir(int tanggalLahir) throws Exception{
+    public void setTanggalLahir(int tanggalLahir) throws Exception {
         if (tanggalLahir > 0) {
             if (tanggalLahir <= 31) {
                 this.tanggalLahir = tanggalLahir;
-            }else{
+            } else {
                 throw new Exception("tidak ada tanggal lebih dari 31,\n pastikan tanggal benar");
             }
-            
-        }else{
-            throw new  Exception("tidak ada tanggal 0,\n pastikan tanggal benar");
+        } else {
+            throw new Exception("tidak ada tanggal 0,\n pastikan tanggal benar");
         }
     }
 
@@ -97,7 +92,6 @@ public class Pasien {
         } else {
             throw new Exception("tidak ada bulan 0,\n pastikan bulan benar");
         }
-
     }
 
     public int getTahunLahir() {
@@ -108,16 +102,7 @@ public class Pasien {
         if (tahunLahir > 0) {
             this.tahunLahir = tahunLahir;
         } else {
-            throw new Exception("Salah Input Tahun");
+            throw new Exception("Salah input tahun");
         }
     }
-    public String BuatNomorRekamMedis() {
-        String nomorRekamMEdis;
-        Date date = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("yyyMMdd");
-        nomorRekamMEdis = ft.format(date) + nama.substring(0, 3);
-        return nomorRekamMEdis;
-    }
-
-
 }
