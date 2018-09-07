@@ -9,80 +9,89 @@ package Model;
  *
  * @author jarkom
  */
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+/**
+ *
+ * @author jarkom
+ */
 public class AntrianPasien {
-    private int TanggalAntrian;
-    private int BulanAntrian;
-    private int TahunAntrian;
+
     private Klinik klinik;
-    private int nomorAntrian=0;
-    private final int JUMLAH_MAKSIMAL_PASIEN=50;
-    private Pasien[] DaftarPasien = new Pasien[JUMLAH_MAKSIMAL_PASIEN];
+    private ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
 
-    public AntrianPasien() {
-    }
     /**
-     * fungsi ini digunakan untuk mendaftar pasien baru di nomor antrian
-     * @return 
+     * constructor untuk mendeklarasikan objek AntrianPasien
      */
-    
-    public void mendaftar(Pasien pasien) throws Exception{
-        //nomoro antrian dibandingkan dengan jumlah maksimal pasien yang dilayani
-        if (nomorAntrian < JUMLAH_MAKSIMAL_PASIEN) {
-            DaftarPasien[nomorAntrian]= pasien;
-            nomorAntrian++;
-        }else{
-            //antrian sudah penuh
-            throw new Exception("Antrian Sudah Penuh");
-        }
-        
-    }
-    
-    public Pasien PanggilPasien(int nomorAntrian)throws Exception{
-        if (nomorAntrian<JUMLAH_MAKSIMAL_PASIEN) {
-        return DaftarPasien[nomorAntrian];
-        }else{
-            throw new Exception("Tidak ada pasien dengan nomor tersebut");
-        }
+    public AntrianPasien() {
+
     }
 
-    public int getTanggalAntrian() {
-        return TanggalAntrian;
-    }
-
-    public void setTanggalAntrian(int TanggalAntrian) {
-        this.TanggalAntrian = TanggalAntrian;
-    }
-
-    public int getBulanAntrian() {
-        return BulanAntrian;
-    }
-
-    public void setBulanAntrian(int BulanAntrian) {
-        this.BulanAntrian = BulanAntrian;
-    }
-
-    public int getTahunAntrian() {
-        return TahunAntrian;
-    }
-
-    public void setTahunAntrian(int TahunAntrian) {
-        this.TahunAntrian = TahunAntrian;
-    }
-
+    /**
+     * method untuk mengambil nilai dari variabel klinik
+     *
+     * @return
+     */
     public Klinik getKlinik() {
+        //perintah untuk pengambalian nilai dari variabel klnik
         return klinik;
     }
 
+    /**
+     * method untuk meng set nilai dari variabel klinik dengan variabel lokal
+     * klinik yang bertipe data Klinik
+     *
+     * @param nama
+     */
     public void setKlinik(Klinik klinik) {
+        // pernyataan bahwa nilai dari variabel klinik yang bersifat global sama dengan nilai dari variabel lokal klinik
         this.klinik = klinik;
     }
 
-    public Pasien[] getDaftarPasien() {
-        return DaftarPasien;
+    /**
+     * method untuk mengambil nilai dari variabel daftarPasien
+     *
+     * @return
+     */
+    public ArrayList<Pasien> getDaftarPasien() {
+        //perintah untuk pengambalian nilai dari variabel daftarPasien
+        return daftarPasien;
     }
 
-    public void setDaftarPasien(Pasien[] DaftarPasienp) {
-        this.DaftarPasien = DaftarPasienp;
+    /**
+     * method untuk mengset nilai dari variabel daftarPasien dengan variabel
+     * lokal daftar pasien yang bertipe ArrayList pasien
+     *
+     * @param nama
+     */
+    public void setDaftarPasien(ArrayList<Pasien> daftarPasien) {
+        // pernyataan bahwa nilai dari variabel daftarPasien yang bersifat global sama dengan nilai dari variabel lokal daftarPasien
+        this.daftarPasien = daftarPasien;
+    }
+
+    /**
+     * Method untuk menampilkan tanggal dan waktu antrian
+     */
+    public void TanggalAntrian() {
+        // membuat objek baru date dengan tipe data Date
+        Date date = new Date();
+        // membuat objek ft bertipe simpleDateFormat sebagai format tampilan tanggal
+        SimpleDateFormat fr = new SimpleDateFormat("E dd/MM/yyy 'at' hh:mm:ss");
+        // menampilkan data dari objek ft dengan format date
+        System.out.println(fr.format(date));
+    }
+
+    /**
+     * Method untuk mendaftar pasien baru di nomor antrian
+     *
+     * @param pasien
+     * @throws Exception
+     */
+    public void Mendaftar(Pasien pasien) {
+        // mengisi data pada variabel daftarPasien dengan variabel lokal daftarPasien 
+        daftarPasien.add(pasien);
     }
 
 }

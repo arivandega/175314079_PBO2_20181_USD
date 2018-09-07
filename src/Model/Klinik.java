@@ -10,5 +10,69 @@ package Model;
  * @author jarkom
  */
 public class Klinik {
-    
+
+    private String idKlinik;
+    private String nama;
+
+    /**
+     * constructor untuk mendeklarasikan objek KLinik
+     */
+    public Klinik() {
+
+    }
+
+    /**
+     * constructor untuk mendeklarasikan objek KLinik dengan parameter lokal
+     * idKlinik dan nama dengan tipe data String
+     *
+     * @param nama
+     */
+    public Klinik(String idKlinik, String nama) {
+        // pernyataan bahwa nilain variabel idKlinik yang bersifat global sama dengan nilai dari variabel lokal idKlinik
+        this.idKlinik = idKlinik;
+        // pernyataan bahwa nilain variabel nama yang bersifat global sama dengan nilai dari variabel lokal nama
+        this.nama = nama;
+    }
+
+    /**
+     * method untuk mengambil nilai dari variabel idKlinik
+     *
+     * @return
+     */
+    public String getIdKlinik() {
+        //printah untuk pengambalian nilai dari variabel idKlinik
+        return idKlinik;
+    }
+
+    /**
+     * method untuk meng-set nilai dari variabel idKLinik dengan variabel lokal
+     * idKLinik dengan tipe data String
+     *
+     * @param nama
+     */
+    public void setIdKlinik(String idKlinik) {
+        // pernyataan bahwa nilai dari variabel idKlinik yang bersifat globalsama dengan nilai dari variabel lokal idKLinik
+        this.idKlinik = idKlinik;
+    }
+
+    /**
+     * method untuk mengambil nilai dari variabel nama
+     *
+     * @return
+     */
+    public String getNama() {
+        //perintah untuk pengambalian nilai dari variabel nama
+        return nama;
+    }
+
+    /**
+     * method untuk meng-set nilai dari variabel nama dengan variabel lokal nama
+     * dengan tipe data String
+     *
+     * @param nama
+     */
+    public void setNama(String nama) {
+        // pernyataan bahwa nilai dari variabel nama yang bersifat global sama dengan nilai dari variabel lokal nama
+        this.nama = nama;
+    }
 }
