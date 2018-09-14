@@ -6,6 +6,7 @@
 package Model;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -14,13 +15,18 @@ import java.util.Date;
  */
 public class Pasien {
 
+   
+
     private String NoRekamMedis;
     private String Nama;
     private String Alamat;
     private String TmptLahir;
+    private String Nik;
     private int TglLahir;
     private int BlnLahir;
     private int Thlahir;
+    public static ArrayList<Pasien> daftarPasien
+            = new ArrayList<Pasien>();
 
     /**
      * constructor untuk mendeklarasikan objek pasien
@@ -38,6 +44,16 @@ public class Pasien {
     public Pasien(String nama) {
         // pernyataan bahwa nilai variabel nama yang bersifat global sama dengan nilai dari variabel lokal nama
         this.Nama = nama;
+    }
+
+    public Pasien(String Nama, String Alamat, String TmptLahir, int TglLahir, int BlnLahir, int Thlahir, String NoRekamMedis) {
+        this.NoRekamMedis = NoRekamMedis;
+        this.Nama = Nama;
+        this.Alamat = Alamat;
+        this.TmptLahir = TmptLahir;
+        this.TglLahir = TglLahir;
+        this.BlnLahir = BlnLahir;
+        this.Thlahir = Thlahir;
     }
 
     /**
@@ -245,6 +261,28 @@ public class Pasien {
         nomorRekamMEdis = ft.format(date) + Nama.substring(0, 3);
         // perintah untuk pengembalian nilai variabel nomorRekamMedis
         return nomorRekamMEdis;
+    }
+
+    public String getNik() {
+        return NoRekamMedis;
+    }
+
+    public void setNik(String Nik) {
+        this.Nik = Nik;
+    }
+
+    public static void tambahPasienBaru(Pasien pasien) {
+        pasien.daftarPasien.add(pasien);
+    }
+    
+    public static Pasien  cariPasien(String NoRM){
+        for (int i = 0; i < daftarPasien.size(); i++) {
+            if (daftarPasien.get(i).getNik() == NoRM) {
+                return daftarPasien.get(i);
+            }
+            
+        }
+        return null;
     }
 
 }

@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package Test;
 
-import Test.DaftarPasienBaru;
+import view.TambahPAsienBaruDialog;
+import view.TambahPAsienBaruDialog;
+import view.TambahPAsienBaruDialog;
 
 /**
  *
@@ -13,7 +15,7 @@ import Test.DaftarPasienBaru;
  */
 public class TestDaftarPasien {
     public static void main(String[] args) {
-            DaftarPasienBaru test = new DaftarPasienBaru();
+            TambahPAsienBaruDialog test = new TambahPAsienBaruDialog();
         test.setSize(500, 600);
         test.setVisible(true);
     }

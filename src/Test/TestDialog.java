@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package Test;
 
-import Test.DaftarAntrianDialog;
+import view.TambahAntrianDialog;
 
 /**
  *
@@ -13,7 +13,7 @@ import Test.DaftarAntrianDialog;
  */
 public class TestDialog {
     public static void main(String[] args) {
-        DaftarAntrianDialog test = new DaftarAntrianDialog();
+        TambahAntrianDialog test = new TambahAntrianDialog();
         test.setSize(500, 600);
         test.setVisible(true);
     }

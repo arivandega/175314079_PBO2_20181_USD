@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Test;
+package view;
 
 import java.awt.Font;
 import javax.swing.JButton;
@@ -15,7 +15,7 @@ import javax.swing.JTextField;
  *
  * @author ROG
  */
-public class DaftarPasienBaru extends JDialog {
+public class TambahPAsienBaruDialog extends JDialog {
 
     private JLabel JudulLabel;
     private JLabel NoRM;
@@ -23,11 +23,11 @@ public class DaftarPasienBaru extends JDialog {
     private JTextField NamaText;
     private JButton SaveButton;
 
-    public DaftarPasienBaru() {
+    public TambahPAsienBaruDialog() {
         init();
     }
 
-    public DaftarPasienBaru(String Title) {
+    public TambahPAsienBaruDialog(String Title) {
         this.setTitle(Title);
         init();
 
