@@ -49,16 +49,15 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
         "28", "29", "30", "31"};
     private String bulanArray[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9",
         "10", "11", "12"};
-    private String tahunArray[] = {"1970", "1971", "1972", "1973", "1974", "1975",
+    private String tahunArray[] = {"1969","1970", "1971", "1972", "1973", "1974", "1975",
         "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985",
         "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994",
-        "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002"};
+        "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002","2003","2004","2005"};
 
     /**
      * konstruktor TambahPasienBariDialog untuk membuat object
      */
     public TambahPasienBaruDialog() {
-        //konstruktor memanggil method init()
         init();
     }
 
@@ -67,9 +66,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
      * lokal title yang bertipe string
      */
     public TambahPasienBaruDialog(String title) {
-        //mengset title dengan data dari variabel title
         this.setTitle(title);
-        //konstruktor memanggil method init()
         init();
     }
 
@@ -77,144 +74,85 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
      * method yang berisikan tampilan
      */
     public void init() {
-        //mengset layout dengan null
         this.setLayout(null);
 
-        // membuat object judul label yang bertipe JLabel
         judulLabel = new JLabel();
-        // mengset text untuk objek judulLabel
         judulLabel.setText("FORM DAFTAR PASIEN BARU");
-        // mengatur font untuk judulLabel
         judulLabel.setFont(new Font(null, Font.CENTER_BASELINE, 16));
-        // mengatur posisi dan ukuran object
         judulLabel.setBounds(50, 20, 250, 50);
-        //menambah judul label ke TambahPasienBaruDialog
         this.add(judulLabel);
 
-        // membuat object namalabel yang bertipe JLabel
         namaLabel = new JLabel();
-        // mengset text untuk objek namaLabel
         namaLabel.setText("Nama");
-        // mengatur posisi dan ukuran object
         namaLabel.setBounds(50, 90, 80, 20);
-        //menambah namalabel ke TambahPasienBaruDialog
         this.add(namaLabel);
 
-        //membuat objek namatext yang bertipe JTextField
         namaText = new JTextField();
-        // mengatur posisi dan ukuran object
         namaText.setBounds(150, 90, 120, 20);
-        //menambah namatext ke TambahPasienBaruDialog
         this.add(namaText);
 
-        //membuat objek lakiradio yang bertipe JRadioButton
         lakiRadio = new JRadioButton("Laki-laki");
-        // mengatur posisi dan ukuran object
         lakiRadio.setBounds(250, 120, 80, 20);
-        //menambah lakiradio ke TambahPasienBaruDialog
         this.add(lakiRadio);
 
-        //membuat objek perempuanradio yang bertipe JRadioButton
         perempuanRadio = new JRadioButton("Perempuan");
-        // mengatur posisi dan ukuran object
         perempuanRadio.setBounds(150, 120, 100, 20);
-        //menambah perempuanradio ke TambahPasienBaruDialog
         this.add(perempuanRadio);
 
-        //membuat objek kelaminradiogroup yang bertipe ButtonGroup
         ButtonGroup KelaminButonGroup = new ButtonGroup();
-        //menambahkan lakiradio ke kelaminbuttongroup
         KelaminButonGroup.add(lakiRadio);
-        //menambahkan perempuanradio ke kelaminbuttongroup
         KelaminButonGroup.add(perempuanRadio);
 
-        // membuat object tanggallahirlabel yang bertipe JLabel
         tanggallahirLabel = new JLabel("Tanggal Lahir");
-        // mengatur posisi dan ukuran object
         tanggallahirLabel.setBounds(50, 180, 80, 20);
-        //menambah tanggallahirlabel ke TambahPasienBaruDialog
         this.add(tanggallahirLabel);
 
-        // membuat object tanggallabel yang bertipe JLabel
         tanggalLabel = new JLabel("Tanggal");
-        // mengatur posisi dan ukuran object
         tanggalLabel.setBounds(150, 150, 80, 20);
-        //menambah tanggallabel ke TambahPasienBaruDialog
         this.add(tanggalLabel);
 
         tanggalCombo = new JComboBox(tanggalArray);
-        // mengatur posisi dan ukuran object
         tanggalCombo.setBounds(150, 180, 80, 20);
-        //menambah tanggalcombo ke TambahPasienBaruDialog
         this.add(tanggalCombo);
 
-        // membuat object bulanlabel yang bertipe JLabel
         bulanLabel = new JLabel("Bulan");
-        // mengatur posisi dan ukuran object
         bulanLabel.setBounds(250, 150, 80, 20);
-        //menambah bulanlabel ke TambahPasienBaruDialog
         this.add(bulanLabel);
 
         bulanCombo = new JComboBox(bulanArray);
-        // mengatur posisi dan ukuran object
         bulanCombo.setBounds(250, 180, 80, 20);
-        //menambah bulancombo ke TambahPasienBaruDialog
         this.add(bulanCombo);
 
-        // membuat object tahunlabel yang bertipe JLabel
         tahunLabel = new JLabel("Tahun");
-        // mengatur posisi dan ukuran object
         tahunLabel.setBounds(350, 150, 80, 20);
-        //menambah tahunlabel ke TambahPasienBaruDialog
         this.add(tahunLabel);
 
         tahunCombo = new JComboBox(tahunArray);
-        // mengatur posisi dan ukuran object
         tahunCombo.setBounds(350, 180, 80, 20);
-        //menambah tahuncombo ke TambahPasienBaruDialog
         this.add(tahunCombo);
 
-        // membuat object nikLabel yang bertipe JLabel
         nikLabel = new JLabel();
         nikLabel.setText("NIK");
-        // mengatur posisi dan ukuran object
         nikLabel.setBounds(50, 210, 80, 20);
-        //menambah nikLabel ke TambahPasienBaruDialog
         this.add(nikLabel);
 
-        //membuat objek nikText yang bertipe JTextField
         nikText = new JTextField();
-        // mengatur posisi dan ukuran object
         nikText.setBounds(150, 210, 120, 20);
-        //menambah nikText ke TambahPasienBaruDialog
         this.add(nikText);
 
-        // membuat object alamatLabel yang bertipe JLabel
         alamatLabel = new JLabel();
-        //mengset text untuk alamatLabel
         alamatLabel.setText("Alamat");
-        // mengatur posisi dan ukuran object
         alamatLabel.setBounds(50, 250, 80, 20);
-        //menambah alamatLabel ke TambahPasienBaruDialog
         this.add(alamatLabel);
 
-        //membuat objek alamatLabel yang bertipe JTextField
         alamatText = new JTextField();
-        // mengatur posisi dan ukuran object
         alamatText.setBounds(150, 250, 120, 20);
-        //menambah alamatLabel ke TambahPasienBaruDialog
         this.add(alamatText);
 
-        //membuat object tambahbtton yang bertipe JButton
         tambahButton = new JButton();
-        //mengset text untuk tambahbutton
         tambahButton.setText("Tambah");
-        // mengatur posisi dan ukuran object
         tambahButton.setBounds(150, 280, 80, 30);
-        //menambah tambahbutton ke TambahPasienBaruDialog
         this.add(tambahButton);
-
-        //tambahbutton memanggil method addActionListener
         tambahButton.addActionListener(this);
 
     }
@@ -226,21 +164,21 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        // perbandingan apabila yang di klik adalah tambahButton
+
         if (e.getSource() == tambahButton) {
-            //membuat object baru yang bertipe pasien
+
             Pasien baru = new Pasien();
-            //mengset variabel nama untuk object baru
+
             baru.setNama(namaText.getText());
-            //mengset variabel alamat untuk object baru
+
             baru.setAlamat(alamatText.getText());
-            //mengset variabel nik untuk object baru
+
             baru.setNoRekamMedis(nikText.getText());
-            //menambahkan object baru ke daftarpasien melalui method tambahpasienbaru
+  
             Pasien.tambahPasienBaru(baru);
-            //mengoutput pesan 
-            JOptionPane.showMessageDialog(null, "Data Anda Telah Ditambahkan");
-            //method agar jdialog automatis keluar  
+
+            JOptionPane.showMessageDialog(null, "Data Sudah Ditambahkan");
+
             this.dispose();
         }
     }
