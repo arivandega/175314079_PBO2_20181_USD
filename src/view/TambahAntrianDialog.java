@@ -6,18 +6,13 @@
 package view;
 
 import Model.Pasien;
-import java.awt.Button;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 /**
@@ -30,118 +25,147 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
     private JLabel namaLabel;
     private JLabel noRMLabel;
     private JLabel alamatLabel;
-    private JLabel tanggalalhirLabel;
     private JTextField namaText;
     private JTextField noRMText;
     private JTextField alamatText;
-    private JComboBox tanggalCombo;
-    private JComboBox bulanCombo;
-    private JComboBox tahunCombo;
-    private JButton tambahButton;
+    private JButton antriButton;
 
-
+    /**
+     * konstruktor TambahAntrianDialog untuk membuat object
+     */
     public TambahAntrianDialog() {
+        //konstruktor memanggil method init()
         init();
     }
 
+    /**
+     * konstruktor TambahAntrianDialog untuk membuat object dengan variabel
+     * lokal title yang bertipe string
+     *
+     * @param title
+     */
     public TambahAntrianDialog(String title) {
+        //mengset title dengan nilai dari variabel lokal title
         this.setTitle(title);
+        //konstruktor memanggil method init()
         init();
     }
 
     public void init() {
+        //mengset layout dengan null
         this.setLayout(null);
 
+        // membuat object judul label yang bertipe JLabel
         judulLabel = new JLabel();
-        judulLabel.setText("Form Daftar Antrian");
+        // mengset text untuk objek judulLabel
+        judulLabel.setText("FORM DAFTAR ANTRIAN");
+        // mengatur font untuk judulLabel
         judulLabel.setFont(new Font(null, Font.BOLD, 16));
+        // mengatur posisi dan ukuran object
         judulLabel.setBounds(50, 20, 250, 30);
+        //menambah judul label ke TambahAntrianDialog
         this.add(judulLabel);
 
+        // membuat object noRMlabel yang bertipe JLabel
         noRMLabel = new JLabel();
+        // mengset text untuk objek noRMLabel
         noRMLabel.setText("No. RM");
+        // mengatur posisi dan ukuran object
         noRMLabel.setBounds(50, 70, 80, 20);
+        //menambah noRMlabel ke TambahAntrianDialog
         this.add(noRMLabel);
 
+        // membuat object noRMtext yang bertipe JTextField
         noRMText = new JTextField();
+        // mengatur posisi dan ukuran object
         noRMText.setBounds(150, 70, 120, 20);
+        //menambah noRMtext ke TambahAntrianDialog
         this.add(noRMText);
 
-        noRMText.addActionListener(this);
-
+        // membuat object namalabel yang bertipe JLabel
         namaLabel = new JLabel();
+        // mengset text untuk objek namaLabel
         namaLabel.setText("Nama");
+        // mengatur posisi dan ukuran object
         namaLabel.setBounds(50, 100, 80, 20);
+        //menambah namalabel ke TambahAntrianDialog
         this.add(namaLabel);
 
+        // membuat object namatext yang bertipe JTextField
         namaText = new JTextField();
+        // mengatur posisi dan ukuran object
         namaText.setBounds(150, 100, 120, 20);
+        //menambah namatext ke TambahAntrianDialog
         this.add(namaText);
 
-        namaText.addActionListener(this);
-
-        tanggalalhirLabel = new JLabel("Tanggal Lahir");
-        tanggalalhirLabel.setBounds(50, 150, 80, 20);
-        this.add(tanggalalhirLabel);
-
-        tanggalCombo = new JComboBox();
-        tanggalCombo.setBounds(150, 160, 80, 20);
-        this.add(tanggalCombo);
-
-        bulanCombo = new JComboBox();
-        bulanCombo.setBounds(250, 160, 80, 20);
- 
-        this.add(bulanCombo);
-
-        tahunCombo = new JComboBox();
-        tahunCombo.setBounds(350, 160, 80, 20);
-        this.add(tahunCombo);
-
+        // membuat object alamatlabel yang bertipe JLabel
         alamatLabel = new JLabel();
+        // mengset text untuk objek alamatLabel
         alamatLabel.setText("Alamat");
-        alamatLabel.setBounds(50, 190, 80, 20);
+        // mengatur posisi dan ukuran object
+        alamatLabel.setBounds(50, 130, 80, 20);
+        //menambah alamatlabel ke TambahAntrianDialog
         this.add(alamatLabel);
 
+        // membuat object alamattext yang bertipe JTextField
         alamatText = new JTextField();
-        alamatText.setBounds(150, 190, 120, 20);
+        // mengatur posisi dan ukuran object
+        alamatText.setBounds(150, 130, 120, 20);
+        //menambah alamattext ke TambahAntrianDialog
         this.add(alamatText);
 
-        alamatText.addActionListener(this);
+        // membuat object antributton yang bertipe JButton
+        antriButton = new JButton();
+        // mengset text untuk objek antriButton
+        antriButton.setText("Antri");
+        // mengatur posisi dan ukuran object
+        antriButton.setBounds(150, 180, 80, 30);
+        //menambah antributton ke TambahAntrianDialog
+        this.add(antriButton);
 
-        tambahButton = new JButton();
-        tambahButton.setText("Tambah");
-        tambahButton.setBounds(150, 220, 80, 30);
-        this.add(tambahButton);
-        
-        tambahButton.addActionListener(this);
+        //noRMText memanggil method addActionListener
+        noRMText.addActionListener(this);
+        //antributton memanggil method addActionListener
+        antriButton.addActionListener(this);
 
     }
 
+    /**
+     * method abstrak dari ActionListener untuk pengoperasian tiap object
+     *
+     * @param ae
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
+        // perbandingan apabila yang di klik adalah noRMText
         if (ae.getSource() == noRMText) {
+            //mencari object pasien berdasarakan noRM
             Pasien cari = Pasien.cariPasien(noRMText.getText());
-            if (cari == null){
-                JOptionPane.showConfirmDialog(null, "Orang Tidak Ada");
-            }else{
+            //perbandingan apabila object cari sama dengan null
+            if (cari == null) {
+                // menampilkan text pada jendela dialog
+                JOptionPane.showMessageDialog(null, "Data Pasien " + noRMText.getText() + " Tidak Ada");
+            } else {
+                //mengset namatext dengan data dari variabel nama dari object cari
                 namaText.setText(cari.getNama());
+                //mengset alamattext dengan data dari variabel alamat dari object cari
+                alamatText.setText(cari.getAlamat());
             }
         }
-        if (ae.getSource() == namaText) {
-            JOptionPane.showMessageDialog(null, namaText.getText());
-        }
-        if (ae.getSource() == alamatText) {
-            JOptionPane.showMessageDialog(null, alamatText.getText());
-        }if (ae.getSource() == tambahButton) {
-            Pasien baru = new Pasien();
-            baru.setNama(namaText.getText());
-            baru.setAlamat(alamatText.getText());
-            
-            Pasien.tambahPasienBaru(baru);
-            
-            JOptionPane.showMessageDialog(null, "Data Telah Ditambahkan");
+        // perbandingan apabila yang di klik adalah antriButton
+        if (ae.getSource() == antriButton) {
+            //mencari object pasien berdasarakan noRM
+            Pasien cari = Pasien.cariPasien(noRMText.getText());
+            //perulangan sebanyak indeks pada daftarpasien
+            for (int i = 0; i < Pasien.daftarPasien.size(); i++) {
+                //perbandingan apabila object cari sama dengan object dari daftar pasie indeks ke i
+                if (cari == Pasien.daftarPasien.get(i)) {
+                    // menampilkan text pada jendela dialog
+                    JOptionPane.showMessageDialog(null, "Nomor Antrian Anda : " + (i + 1));
+                    //method agar jdialog langsung keluar 
+                    this.dispose();
+                }
+            }
         }
     }
-
-
 }
