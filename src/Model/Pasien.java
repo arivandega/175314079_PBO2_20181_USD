@@ -11,22 +11,18 @@ import java.util.Date;
 
 /**
  *
- * @author ROG
+ * @author Asus
  */
 public class Pasien {
 
-   
-
-    private String NoRekamMedis;
+    private String noRekamMedis;
     private String Nama;
     private String Alamat;
     private String TmptLahir;
-    private String Nik;
     private int TglLahir;
     private int BlnLahir;
-    private int Thlahir;
-    public static ArrayList<Pasien> daftarPasien
-            = new ArrayList<Pasien>();
+    private int ThLahir;
+    public static ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
 
     /**
      * constructor untuk mendeklarasikan objek pasien
@@ -42,18 +38,18 @@ public class Pasien {
      * @param nama
      */
     public Pasien(String nama) {
-        // pernyataan bahwa nilai variabel nama yang bersifat global sama dengan nilai dari variabel lokal nama
+        // pernyataan bahwa nilai variabel nama sama dengan nilai dari variabel lokal nama
         this.Nama = nama;
     }
 
-    public Pasien(String Nama, String Alamat, String TmptLahir, int TglLahir, int BlnLahir, int Thlahir, String NoRekamMedis) {
-        this.NoRekamMedis = NoRekamMedis;
-        this.Nama = Nama;
-        this.Alamat = Alamat;
-        this.TmptLahir = TmptLahir;
-        this.TglLahir = TglLahir;
-        this.BlnLahir = BlnLahir;
-        this.Thlahir = Thlahir;
+    public Pasien(String nama, String Alamat, String tempatLahir, int tanggal, int bulan, int tahun, String nik) {
+        this.Nama = nama;
+        this.Alamat = this.Alamat;
+        this.TmptLahir = tempatLahir;
+        this.TglLahir = tanggal;
+        this.BlnLahir = bulan;
+        this.ThLahir = tahun;
+        this.noRekamMedis = nik;
     }
 
     /**
@@ -62,26 +58,12 @@ public class Pasien {
      * @return
      */
     public String getNoRekamMedis() {
-        //perintah untuk pengambalian nilai dari variabel noRekamMedis
-        return NoRekamMedis;
+        //pengambalian nilai dari variabel noRekamMedis
+        return noRekamMedis;
     }
 
-    /**
-     * method untuk meng-set nilai dari variabel noRekamMedis dengan variabel
-     * lokal noRekamMedis dengan tipe data String
-     *
-     * @param noRekamMedis
-     * @throws Exception
-     */
-    public void setNoRekamMedis(String noRekamMedis) throws Exception {
-        // pengecekan Banyak karakter variabel NoRekamMedis harus lebih dari 6 
-        if (noRekamMedis.length() > 6) {
-            // pernyataan bahwa nilai variabel NoRekamMedis yang bersifat global sama dengan nilai dari variabel lokal NoRekamMedis
-            this.NoRekamMedis = noRekamMedis;
-        } else {
-            // pesan apabila input noRekamMedis salah
-            throw new Exception("Nomor rekam Medis Salah");
-        }
+    public void setNoRekamMedis(String noRekamMedis) {
+        this.noRekamMedis = noRekamMedis;
     }
 
     /**
@@ -90,18 +72,18 @@ public class Pasien {
      * @return
      */
     public String getNama() {
-        // perintah untuk pengambalian nilai dari variabel nama
+        // pengambalian nilai dari variabel nama
         return Nama;
     }
 
     /**
      * method untuk mengset nilai dari variabel nema dengan parameter lokal nama
-     * yang bertipe data String
+     * yang bertipe String
      *
      * @param nama
      */
     public void setNama(String nama) {
-        // pernyataan bahwa nilai dari variabel nama yang bersifat global sama dengan nilai dari variabel lokal nama
+        // pernyataan bahwa nilai dari variabel nama sama dengan nilai dari variabel lokal nama
         this.Nama = nama;
     }
 
@@ -111,18 +93,18 @@ public class Pasien {
      * @return
      */
     public String getAlamat() {
-        //perintah untuk pengambalian nilai dari variabel alamat
+        //pengambalian nilai dari variabel alamat
         return Alamat;
     }
 
     /**
      * method untuk mengset nilai dari variabel alamat dengan parameter lokal
-     * alamat yang bertipe data String
+     * alamat yang bertipe String
      *
      * @param alamat
      */
     public void setAlamat(String alamat) {
-        // pernyataan bahwa nilai dari variabel alamat yang bersifat global sama dengan nilai dari variabel lokal alamat
+        // pernyataan bahwa nilai dari variabel alamat sama dengan nilai dari variabel lokal alamat
         this.Alamat = alamat;
     }
 
@@ -132,18 +114,18 @@ public class Pasien {
      * @return
      */
     public String getTempatLahir() {
-        //perintah untuk pengambalian nilai dari variabel TmptLahir
+        //pengambalian nilai dari variabel tempatLahir
         return TmptLahir;
     }
 
     /**
      * method untuk mengset nilai dari variabel tempatLahir dengan parameter
-     * lokal tempatLahir yang bertipe data String
+     * lokal tempatLahir yang bertipe String
      *
      * @param tempatLahir
      */
     public void setTempatLahir(String tempatLahir) {
-        // pernyataan bahwa nilai dari variabel Tmptlahir yang bersifat global sama dengan nilai dari variabel lokal tempatLahir
+        // pernyataan bahwa nilai dari variabel tempatLahir sama dengan nilai dari variabel lokal tempatLahir
         this.TmptLahir = tempatLahir;
     }
 
@@ -153,7 +135,7 @@ public class Pasien {
      * @return
      */
     public int getTanggalLahir() {
-        // perintah untuk pengambalian nilai dari variabel TglLahir
+        //pengambalian nilai dari variabel tanggalLahir
         return TglLahir;
     }
 
@@ -165,18 +147,16 @@ public class Pasien {
      * @throws Exception
      */
     public void setTanggalLahir(int tanggalLahir) throws Exception {
-        //pengecekan nilai variabel lokal tanggalLahir harus lebih dari 0
         if (tanggalLahir > 0) {
-            //pengecekan nilai variabel lokal tanggalLahir harus kurang dari atau sama dengan 31
             if (tanggalLahir <= 31) {
-                //pernyataan bahwa nilai dari variabel TglLahir yang bersifat global sama dengan nilai dari variabel lokal tanggalLahir
+  
                 this.TglLahir = tanggalLahir;
             } else {
-                // pesan apabila input tanggalLahir lebih dari 31 
+
                 throw new Exception("Input Tanggal Lebih Dari 31");
             }
         } else {
-            // pesan apabila input tanggalLahir kurang dari 0 
+
             throw new Exception("Input Tanggal Kurang Dari 0");
         }
     }
@@ -187,7 +167,7 @@ public class Pasien {
      * @return
      */
     public int getBulanLahir() {
-        // perintah untuk pengambalian nilai dari variabel BlnLahir
+
         return BlnLahir;
     }
 
@@ -199,18 +179,17 @@ public class Pasien {
      * @throws Exception
      */
     public void setBulanLahir(int bulanLahir) throws Exception {
-        //pengecekan nilai variabel lokal bulanLahir harus lebih dari 0
+
         if (bulanLahir > 0) {
-            //pengecekan nilai variabel lokal bulanLahir harus kurang dari atau sama dengan 12
             if (bulanLahir <= 12) {
-                //pernyataan bahwa nilai dari variabel BlnLahir yang bersifat global sama dengan nilai dari variabel lokal bulanLahir
+
                 this.BlnLahir = bulanLahir;
             } else {
-                // pesan apabila input bulanLahir lebih dari 12
+
                 throw new Exception("Input Bulan Lebih Dari 12");
             }
         } else {
-            // pesan apabila input bulanLahir kurang dari 0 
+
             throw new Exception("input Bulan Kurang Dari 0");
         }
 
@@ -222,8 +201,8 @@ public class Pasien {
      * @return
      */
     public int getTahunLahir() {
-        // perintah untuk pengambalian nilai dari variabel ThLahir
-        return Thlahir;
+
+        return ThLahir;
     }
 
     /**
@@ -234,12 +213,12 @@ public class Pasien {
      * @throws Exception
      */
     public void setTahunLahir(int tahunLahir) throws Exception {
-        //pengecekan nilai variabel lokal tahunLahir harus lebih dari 0
+
         if (tahunLahir > 0) {
-            //pernyataan bahwa nilai dari variabel ThnLahir yang bersifat global sama dengan nilai dari variabel lokal tahunLahir
-            this.Thlahir = tahunLahir;
+
+            this.ThLahir = tahunLahir;
         } else {
-            // pesan apabila input tahunLahir
+
             throw new Exception("Salah Input Tahun");
         }
     }
@@ -251,38 +230,46 @@ public class Pasien {
      * @return
      */
     public String BuatNomorRekamMedis() {
-        // mendeklarasikan variabel nomorRekamMedis yang bertipe String
+
         String nomorRekamMEdis;
-        // membuat objek baru date dengan tipe data Date
+
         Date date = new Date();
-        // membuat objek ft bertipe simpleDateFormat sebagai format tampilan tanggal
+
         SimpleDateFormat ft = new SimpleDateFormat("yyyMMdd");
-        //mendeklarasikan nilai dari variabel nomorRekamMedis yaitu tanggal ditambah 3 huruf pertama dari nama
+
         nomorRekamMEdis = ft.format(date) + Nama.substring(0, 3);
-        // perintah untuk pengembalian nilai variabel nomorRekamMedis
+
         return nomorRekamMEdis;
     }
 
-    public String getNik() {
-        return NoRekamMedis;
-    }
-
-    public void setNik(String Nik) {
-        this.Nik = Nik;
-    }
-
+    /**
+     * method untuk menambahkan objek pasien ke arrayList daftarpasien
+     *
+     * @param pasien
+     */
     public static void tambahPasienBaru(Pasien pasien) {
-        pasien.daftarPasien.add(pasien);
+
+        daftarPasien.add(pasien);
+
     }
-    
-    public static Pasien  cariPasien(String NoRM){
+
+    /**
+     * method untuk mencari object pasien berdasarkan nomor rekam medis
+     *
+     * @param NoRM
+     * @return
+     */
+    public static Pasien cariPasien(String NoRM) {
+
         for (int i = 0; i < daftarPasien.size(); i++) {
-            if (daftarPasien.get(i).getNik() == NoRM) {
+
+            if (NoRM == null ? daftarPasien.get(i).getNoRekamMedis() == null
+                    : NoRM.equals(daftarPasien.get(i).getNoRekamMedis())) {
+
                 return daftarPasien.get(i);
             }
-            
         }
+
         return null;
     }
-
 }
