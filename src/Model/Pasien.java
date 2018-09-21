@@ -272,4 +272,7 @@ public class Pasien {
 
         return null;
     }
+    public String toString(){
+        return Nama+","+Alamat;
+}
 }

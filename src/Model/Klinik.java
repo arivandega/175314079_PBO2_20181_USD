@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author jarkom
@@ -14,6 +16,20 @@ public class Klinik {
     private String idKlinik;
     private String nama;
 
+    public static ArrayList<Klinik> daftarKlinik = new ArrayList<Klinik>();
+
+    public static void tambahKlinik(Klinik klinik) {
+        daftarKlinik.add(klinik);
+    }
+
+    public static Klinik cariklinik(String namaKlinik) {
+        for (int i = 0; i < daftarKlinik.size(); i++) {
+            if (daftarKlinik.get(i).getNama().equalsIgnoreCase(namaKlinik)) {
+
+            }
+        }
+        return null;
+    }
     /**
      * constructor untuk mendeklarasikan objek KLinik
      */
