@@ -5,7 +5,7 @@
  */
 package Test;
 
-import Model.AntrianKlinik;
+import Model.AntrianPasien;
 import Model.Klinik;
 import Model.Pasien;
 
@@ -17,25 +17,25 @@ import Model.Pasien;
  */
 public class TestAntrianKLinik {
     public static void main(String[] args) {
-        AntrianKlinik.buatAntrian(
+        AntrianPasien.buatAntrian(
                 21,
                 9,
                 2018,
                 new Klinik("001", "anak"));
 
-        AntrianKlinik.buatAntrian(
+        AntrianPasien.buatAntrian(
                 21,
                 9,
                 2018,
                 new Klinik("002", "saraf"));
 
-        AntrianKlinik.buatAntrian(
+        AntrianPasien.buatAntrian(
                 21,
                 9,
                 2018,
                 new Klinik("001", "anak"));
-        for (int i = 0; i < AntrianKlinik.daftarAntrian.size(); i++) {
-            System.out.println(AntrianKlinik.daftarAntrian.get(i));
+        for (int i = 0; i < AntrianPasien.daftarAntrian.size(); i++) {
+            System.out.println(AntrianPasien.daftarAntrian.get(i));
         }
 
         Pasien pasien1 = new Pasien();
@@ -46,13 +46,13 @@ public class TestAntrianKLinik {
         pasien2.setNama("adi");
         pasien2.setAlamat("klaten");
 
-        int indeksAntrian = AntrianKlinik.cariAntrian(21, 9, 2018, new Klinik("001", "anak"));
+        int indeksAntrian = AntrianPasien.cariAntrian(21, 9, 2018, new Klinik("001", "anak"));
         if (indeksAntrian > 0) {
-            AntrianKlinik.daftarAntrian.get(indeksAntrian).Mendaftar(pasien1);
-            AntrianKlinik.daftarAntrian.get(indeksAntrian).Mendaftar(pasien2);
+            AntrianPasien.daftarAntrian.get(indeksAntrian).Mendaftar(pasien1);
+            AntrianPasien.daftarAntrian.get(indeksAntrian).Mendaftar(pasien2);
         }
-        for (int i = 0; i < AntrianKlinik.daftarAntrian.get(indeksAntrian).getDaftarPasienAntri().size(); i++) {
-            System.out.println(AntrianKlinik.daftarAntrian.get(indeksAntrian).getDaftarPasienAntri().get(i));
+        for (int i = 0; i < AntrianPasien.daftarAntrian.get(indeksAntrian).getDaftarPasienAntri().size(); i++) {
+            System.out.println(AntrianPasien.daftarAntrian.get(indeksAntrian).getDaftarPasienAntri().get(i));
         }
     }
 

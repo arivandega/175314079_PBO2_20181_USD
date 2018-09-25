@@ -5,13 +5,15 @@
  */
 package Model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
  * @author jarkom
  */
-public class AntrianKlinik {
+public class AntrianPasien {
 
     private int nomorAntrian = 0;
     private int tanggalAntrian;
@@ -19,12 +21,12 @@ public class AntrianKlinik {
     private int tahunAntrian;
     private Klinik klinik;
     private ArrayList<Pasien> daftarPasienAntri = new ArrayList<Pasien>();
-    public static ArrayList<AntrianKlinik> daftarAntrian = new ArrayList<AntrianKlinik>();
+    public static ArrayList<AntrianPasien> daftarAntrian = new ArrayList<AntrianPasien>();
 
-    public AntrianKlinik() {
+    public AntrianPasien() {
     }
 
-    public AntrianKlinik(int tanggalAntrian, int bulanAntrian, int tahunAntrian, Klinik klinik) {
+    public AntrianPasien(int tanggalAntrian, int bulanAntrian, int tahunAntrian, Klinik klinik) {
         this.tanggalAntrian = tanggalAntrian;
         this.bulanAntrian = bulanAntrian;
         this.tahunAntrian = tahunAntrian;
@@ -148,6 +150,14 @@ public class AntrianKlinik {
         //pengembalian nilai dari daftarPasienKlinik
         return daftarPasienAntri;
     }
+    /**
+     * MEmbuat method Tanggal Antrian
+     */
+     public void TanggalAntrian() {
+        Date date = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat("E dd/MM/yyy 'at' hh:mm:ss");
+        System.out.println(ft.format(date));
+    }
 
     /**
      * Fungsi ini digunakan untuk mendaftar pasien baru di nomor antrian
@@ -160,12 +170,17 @@ public class AntrianKlinik {
         daftarPasienAntri.add(pasien);
     }
 
-    public void daftarPasien(Pasien pasien, int tanggalAntrian, int bulanAntrian, int tahunAntrian, Klinik klinik) {
-        cariAntrian(tanggalAntrian, bulanAntrian, tahunAntrian, klinik);
-    }
-    
+    public static void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
+        if (cariAntrian(tanggal, bulan, tahun, klinik) >= 0 ) {
+            daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).Mendaftar(pasien);
 
-    public AntrianKlinik cariPasien(String NoRM) {
+        } else {
+            buatAntrian(tanggal, bulan, tahun, klinik);
+            daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).Mendaftar(pasien);
+        }
+    }
+
+    public AntrianPasien cariPasien(String NoRM) {
         for (int i = 0; i < daftarAntrian.size(); i++) {
             if (NoRM.equals(daftarPasienAntri.get(i).getNoRekamMedis())) {
                 return daftarAntrian.get(i);
@@ -175,7 +190,7 @@ public class AntrianKlinik {
     }
 
     public static void buatAntrian(int tanggalAntrian, int bulanAntrian, int tahunAntrian, Klinik klinik) {
-        AntrianKlinik antrian = new AntrianKlinik();
+        AntrianPasien antrian = new AntrianPasien();
         antrian.setTanggalAntrian(tanggalAntrian);
         antrian.setBulanAntrian(bulanAntrian);
         antrian.setTahunAntrian(tahunAntrian);
@@ -204,11 +219,4 @@ public class AntrianKlinik {
         return -1;
     }
 
-    public Object getDaftarPasien() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void mendaftar(Pasien pasien1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-}
+ }
