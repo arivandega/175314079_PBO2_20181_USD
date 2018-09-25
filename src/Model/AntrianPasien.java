@@ -169,7 +169,14 @@ public class AntrianPasien {
         //membandingkan nomorAntrian dengan jumlah maksimal pasien yang dilayani
         daftarPasienAntri.add(pasien);
     }
-
+/**
+ * Membuat method daftar Pasien
+ * @param pasien
+ * @param tanggal
+ * @param bulan
+ * @param tahun
+ * @param klinik 
+ */
     public static void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
         if (cariAntrian(tanggal, bulan, tahun, klinik) >= 0 ) {
             daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).Mendaftar(pasien);
@@ -179,7 +186,11 @@ public class AntrianPasien {
             daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).Mendaftar(pasien);
         }
     }
-
+/**
+ * Membuat method Cari Pasien
+ * @param NoRM
+ * @return 
+ */
     public AntrianPasien cariPasien(String NoRM) {
         for (int i = 0; i < daftarAntrian.size(); i++) {
             if (NoRM.equals(daftarPasienAntri.get(i).getNoRekamMedis())) {
@@ -188,7 +199,13 @@ public class AntrianPasien {
         }
         return null;
     }
-
+/**
+ * membuat method Buat Antrian
+ * @param tanggalAntrian
+ * @param bulanAntrian
+ * @param tahunAntrian
+ * @param klinik 
+ */
     public static void buatAntrian(int tanggalAntrian, int bulanAntrian, int tahunAntrian, Klinik klinik) {
         AntrianPasien antrian = new AntrianPasien();
         antrian.setTanggalAntrian(tanggalAntrian);
@@ -204,7 +221,14 @@ public class AntrianPasien {
 
         
     }
-
+/**
+ * Membuat method Cari Antrian
+ * @param tanggalAntrian
+ * @param bulanAntrian
+ * @param tahunAntrian
+ * @param klinik
+ * @return 
+ */
     public static int cariAntrian(int tanggalAntrian, int bulanAntrian, int tahunAntrian, Klinik klinik) {
         for (int i = 0; i < daftarAntrian.size(); i++) {
             if (daftarAntrian.get(i).getTanggalAntrian() == tanggalAntrian
