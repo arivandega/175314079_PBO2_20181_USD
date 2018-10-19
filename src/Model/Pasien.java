@@ -5,9 +5,16 @@
  */
 package Model;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -149,7 +156,7 @@ public class Pasien {
     public void setTanggalLahir(int tanggalLahir) throws Exception {
         if (tanggalLahir > 0) {
             if (tanggalLahir <= 31) {
-  
+
                 this.TglLahir = tanggalLahir;
             } else {
 
@@ -272,7 +279,48 @@ public class Pasien {
 
         return null;
     }
-    public String toString(){
-        return Nama+","+Alamat;
+
+    public static void simpanDaftarPasien(File file) {
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            for (int i = 0; i < daftarPasien.size(); i++) {
+                String data = daftarPasien.get(i).toString();
+                fos.write(data.getBytes());
+            }
+            fos.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public static void bacaDaftarPasien(File file) {
+       try {
+           String hasilBaca ="";
+            FileInputStream fis = new FileInputStream(file);
+            int dataInt;
+            
+            while((dataInt = fis.read())!=-1){
+                if ((char)dataInt !='\t') {
+                if ((char)dataInt != '\n') {
+                    hasilBaca = hasilBaca + (char) dataInt;
+                }else{
+                    Pasien temp = new Pasien();
+                    temp.setNoRekamMedis(hasilBaca);
+                    temp.setNama(hasilBaca);
+                    temp.setAlamat(hasilBaca);
+                    tambahPasienBaru(temp);
+                }
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        }
 }
+
+    public String toString() {
+        return noRekamMedis +"\t"+ Nama + "\t" + Alamat + "\n";
+    }
 }
